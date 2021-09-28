@@ -1,11 +1,9 @@
-package jewels.necklace;
+package jewels.classes.necklace;
 
-import jewels.gems.Gem;
+import jewels.classes.gems.Gem;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Necklace {
     private List<Gem> gems;

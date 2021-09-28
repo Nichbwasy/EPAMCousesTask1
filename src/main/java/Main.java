@@ -1,5 +1,5 @@
-import jewels.gems.*;
-import jewels.necklace.Necklace;
+import jewels.classes.gems.*;
+import jewels.classes.necklace.Necklace;
 
 public class Main {
     public static void main(String[] args) {

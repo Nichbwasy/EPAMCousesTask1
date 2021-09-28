@@ -1,6 +1,6 @@
-package jewels.gems;
+package jewels.classes.gems;
 
-import jewels.commom.PreciousTypes;
+import jewels.classes.commom.PreciousTypes;
 
 public class Ruby extends Gem{
     public Ruby() {

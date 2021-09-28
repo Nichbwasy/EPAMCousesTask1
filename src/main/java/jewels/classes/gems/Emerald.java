@@ -1,6 +1,6 @@
-package jewels.gems;
+package jewels.classes.gems;
 
-import jewels.commom.PreciousTypes;
+import jewels.classes.commom.PreciousTypes;
 
 public class Emerald extends Gem{
     public Emerald() {
