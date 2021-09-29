@@ -5,7 +5,7 @@ import jewels.classes.commom.PreciousTypes;
 public class Gem {
     protected Double karat = 0D;
     protected PreciousTypes precious = PreciousTypes.ORDINARY;
-    protected Double value = 0D;
+    protected Double price = 0D;
 
     public Double getKarat() {
         return karat;
@@ -23,8 +23,8 @@ public class Gem {
         return precious;
     }
 
-    public Double getValue() {
-        return value;
+    public Double getPrice() {
+        return price;
     }
 
 }

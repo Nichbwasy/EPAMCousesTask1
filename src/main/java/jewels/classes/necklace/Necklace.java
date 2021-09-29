@@ -15,7 +15,7 @@ public class Necklace {
         if (size >= 0) {
             this.size = size;
         } else {
-            this.size = size;
+            this.size = 0;
             System.out.println("Size of the necklace can't be lesser than 0!");
         }
     }
@@ -57,4 +57,10 @@ public class Necklace {
             return false;
         }
     }
+
+    //Returns list of all gems in the necklace
+    public List<Gem> getGems() {
+        return gems;
+    }
+
 }
