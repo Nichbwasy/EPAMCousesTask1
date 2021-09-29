@@ -7,11 +7,13 @@ public class Ruby extends Gem{
         this.karat = 1D;
         this.precious = PreciousTypes.PRECIOUS;
         this.price = karat * 21.98;
+        this.transparency = 0.75;
     }
 
     public Ruby(Double karat) {
         this.karat = karat;
         this.precious = PreciousTypes.PRECIOUS;
         this.price = karat * 21.98;
+        this.transparency = 0.75;
     }
 }

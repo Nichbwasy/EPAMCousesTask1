@@ -1,6 +1,10 @@
 package jewels.interfaces.controls;
 
+import jewels.classes.commom.PreciousTypes;
+import jewels.classes.gems.Gem;
 import jewels.classes.necklace.Necklace;
+
+import java.util.List;
 
 public interface INecklaceControl {
     /**
@@ -17,4 +21,20 @@ public interface INecklaceControl {
      */
     Double getNecklacePrice(Necklace necklace);
 
+    /**
+     * Sorting gems in the necklace by precious type.
+     * @param necklace Necklace to sort.
+     * @param type Gems type for sorting.
+     * @return Return necklace with sorted gems.
+     */
+    Necklace sortGemsByType(Necklace necklace, PreciousTypes type);
+
+    /**
+     * Returns gems from the necklace with selected transparency diapason.
+     * @param necklace Necklace to sort.
+     * @param minTransparency Min transparency to sort.
+     * @param maxTransparency Max transparency to sort.
+     * @return List of gems in selected transparency diapason.
+     */
+    List<Gem> getGemsByTransparency(Necklace necklace, Double minTransparency, Double maxTransparency);
 }

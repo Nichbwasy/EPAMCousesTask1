@@ -1,12 +1,17 @@
 package jewels.classes.necklace;
 
+import jewels.classes.filters.NecklaceFilter;
 import jewels.classes.gems.Gem;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class Necklace {
-    private List<Gem> gems;
+public class Necklace<T extends Gem> {
+    private List<T> gems;
     private Integer size;
 
     //Create necklace fixed size without gems.
@@ -21,15 +26,15 @@ public class Necklace {
     }
 
     //Create necklace with gems. Size of the necklace depends of count of gems.
-    public Necklace(Gem... gems){
-        this.gems = new ArrayList<Gem>();
-        for(Gem g : gems)
+    public Necklace(T... gems){
+        this.gems = new ArrayList<>();
+        for(T g : gems)
             this.gems.add(g);
         this.size = gems.length;
     }
 
     //Add new gem in the necklace
-    public void addGem(Gem gem) {
+    public void addGem(T gem) {
         if (gems.size() + 1 <= size) {
             gems.add(gem);
         } else {
@@ -38,9 +43,9 @@ public class Necklace {
     }
 
     //Add new gems in the necklace
-    public void addGems(Gem... gems) {
+    public void addGems(T... gems) {
         if (this.gems.size() + gems.length <= size) {
-            for (Gem g : gems)
+            for (T g : gems)
                 this.gems.add(g);
         } else {
             System.out.println("Can't add gems in the necklace. Too many gems!");
@@ -58,9 +63,72 @@ public class Necklace {
         }
     }
 
-    //Returns list of all gems in the necklace
     public List<Gem> getGems() {
-        return gems;
+        return getGems(null, null);
+    }
+
+    public List<Gem> getGems(String sortName) {
+        return getGems(null, sortName);
+    }
+
+    public List<Gem> getGems(NecklaceFilter filter) {
+        return getGems(filter, null);
+    }
+    //Returns list of all gems in the necklace
+    public List<Gem> getGems(NecklaceFilter filter, String sortName) {
+        try {
+            Stream<T> stream = gems.stream();
+            Predicate<T> predicate = getPredicateByFilter(filter);
+            if (predicate != null) {
+                stream = stream.filter(predicate);
+            }
+            Comparator<T> comparator = getComparatorBySortName(sortName);
+            if (comparator != null) {
+                stream = stream.sorted(comparator);
+            }
+            return stream.collect(Collectors.toList());
+        }catch (Exception e) {
+
+            return null;
+        }
+    }
+
+    private Predicate<T> getPredicateByFilter(NecklaceFilter filter) {
+        try {
+            if (filter == null) return null;
+            return gem -> {
+                if (filter.getExcludedNecklace().gems != null) {
+                    if (filter.getGemType() != null) {
+                        return filter.getGemType().equals(gem.getPrecious());
+                    }
+                    if (filter.getMinTransparency() != null && filter.getMaxTransparency() != null) {
+                        return filter.getMinTransparency() <= gem.getTransparency() && filter.getMaxTransparency() >= gem.getTransparency();
+                    }
+                }
+                return false;
+            };
+        }catch (Exception e) {
+            return null;
+        }
+    }
+
+    private Comparator<T> getComparatorBySortName(String sortName) {
+        try {
+            if (sortName == null) return null;
+            switch (sortName.toLowerCase()) {
+                case "type" : {
+                    return Comparator.comparing(Gem::getPrecious);
+                }
+                case "transparency" : {
+                    return Comparator.comparing(Gem::getTransparency);
+                }
+                default: {
+                    return null;
+                }
+            }
+        }catch (Exception e) {
+            return null;
+        }
     }
 
 }

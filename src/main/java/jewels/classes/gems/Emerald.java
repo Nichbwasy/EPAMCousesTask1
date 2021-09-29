@@ -7,11 +7,13 @@ public class Emerald extends Gem{
         this.karat = 1D;
         this.precious = PreciousTypes.PRECIOUS;
         this.price = karat * 68.17;
+        this.transparency = 0.94;
     }
 
     public Emerald(Double karat) {
         this.karat = karat;
         this.precious = PreciousTypes.PRECIOUS;
         this.price = karat * 68.17;
+        this.transparency = 0.94;
     }
 }

@@ -6,6 +6,7 @@ public class Gem {
     protected Double karat = 0D;
     protected PreciousTypes precious = PreciousTypes.ORDINARY;
     protected Double price = 0D;
+    protected Double transparency = 0D;
 
     public Double getKarat() {
         return karat;
@@ -27,4 +28,17 @@ public class Gem {
         return price;
     }
 
+    public Double getTransparency() {
+        return transparency;
+    }
+
+    @Override
+    public String toString() {
+        return "Gem{" +
+                "karat=" + karat +
+                ", precious=" + precious +
+                ", price=" + price +
+                ", transparency=" + transparency +
+                '}';
+    }
 }
