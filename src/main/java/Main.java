@@ -18,13 +18,12 @@ public class Main {
         Gem g4 = new Ruby(1.5D);
         Gem g5 = new Emerald(3.4D);
         Necklace necklace = new Necklace(5);
-        necklace.addGems(g1, g2, g3, g4, g5);
+        necklace.addGems(g1, g3, g2, g4, g5);
 
-        NecklaceFilter filter = new NecklaceFilter(necklace);
-        Necklace sortedNecklace = necklaceControl.sortGemsByType(necklace, PreciousTypes.PRECIOUS);
+        Necklace sortedNecklace = necklaceControl.sortGemsByField(necklace, "precious");
 
 
-        List<Gem> gems = sortedNecklace.getGems();
+        List<Gem> gems = necklaceControl.getGemsByTransparency(necklace, 0.7D, 0.99D);
         for (Gem g : gems) System.out.println(g);
 
         System.out.println("The necklace weight is " + necklaceControl.getNecklaceWeight(necklace));

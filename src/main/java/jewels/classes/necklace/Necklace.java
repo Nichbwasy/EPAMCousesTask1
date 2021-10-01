@@ -116,8 +116,14 @@ public class Necklace<T extends Gem> {
         try {
             if (sortName == null) return null;
             switch (sortName.toLowerCase()) {
-                case "type" : {
+                case "precious" : {
                     return Comparator.comparing(Gem::getPrecious);
+                }
+                case "price" : {
+                    return Comparator.comparing(Gem::getPrice);
+                }
+                case "karat" : {
+                    return Comparator.comparing(Gem::getKarat);
                 }
                 case "transparency" : {
                     return Comparator.comparing(Gem::getTransparency);

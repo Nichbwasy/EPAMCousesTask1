@@ -1,11 +1,11 @@
 package jewels.classes.controls;
 
-import jewels.classes.commom.PreciousTypes;
 import jewels.classes.filters.NecklaceFilter;
 import jewels.classes.gems.Gem;
 import jewels.classes.necklace.Necklace;
 import jewels.interfaces.controls.INecklaceControl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NecklaceControl implements INecklaceControl {
@@ -28,10 +28,8 @@ public class NecklaceControl implements INecklaceControl {
     }
 
     @Override
-    public Necklace sortGemsByType(Necklace necklace, PreciousTypes type) {
-        NecklaceFilter filter = new NecklaceFilter(necklace);
-        filter.setGemType(type);
-        List<Gem> gems = necklace.getGems(filter);
+    public Necklace sortGemsByField(Necklace necklace, String field) {
+        List<Gem> gems = necklace.getGems(field);
         Necklace retNecklace = new Necklace(gems.size());
         for (Gem g : gems) retNecklace.addGem(g);
         return retNecklace;
@@ -39,23 +37,15 @@ public class NecklaceControl implements INecklaceControl {
 
     @Override
     public List<Gem> getGemsByTransparency(Necklace necklace, Double minTransparency, Double maxTransparency) {
-        List<Gem> sortedGems = null;
-        if (minTransparency >= 0 && minTransparency <= 1){
-            if (maxTransparency >= 0 && maxTransparency <= 1) {
-                if (minTransparency > maxTransparency) {
-                    NecklaceFilter filter = new NecklaceFilter(necklace);
-                    filter.setMaxTransparency(maxTransparency);
-                    filter.setMinTransparency(maxTransparency);
-                    return necklace.getGems(filter, null);
-                } else {
-                    System.out.println("Min transparency can't be more then max transparency.");
-                }
-            } else {
-                System.out.println("Max transparency must be in the diapason from 0 to 1.");
-            }
+        List<Gem> result = new ArrayList<>();
+        if (minTransparency < maxTransparency) {
+            NecklaceFilter filter = new NecklaceFilter(necklace);
+            filter.setMaxTransparency(maxTransparency);
+            filter.setMinTransparency(minTransparency);
+            result = necklace.getGems(filter, null);
         } else {
-            System.out.println("Min transparency must be in the diapason from 0 to 1.");
+            System.out.println("Min transparency can't be more then max transparency.");
         }
-        return sortedGems;
+        return result;
     }
 }

@@ -24,10 +24,10 @@ public interface INecklaceControl {
     /**
      * Sorting gems in the necklace by precious type.
      * @param necklace Necklace to sort.
-     * @param type Gems type for sorting.
+     * @param field Field for sorting.
      * @return Return necklace with sorted gems.
      */
-    Necklace sortGemsByType(Necklace necklace, PreciousTypes type);
+    Necklace sortGemsByField(Necklace necklace, String field);
 
     /**
      * Returns gems from the necklace with selected transparency diapason.

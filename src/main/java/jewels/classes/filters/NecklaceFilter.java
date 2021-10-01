@@ -39,8 +39,10 @@ public class NecklaceFilter {
     public void setMinTransparency(Double minTransparency) {
         if (minTransparency >= 0 & minTransparency <= 1)
             this.minTransparency = minTransparency;
-        else
-            System.out.println("Transparency must be in the diapason from 0 to 1.");
+        else {
+            this.maxTransparency = 0D;
+            System.out.println("Min transparency must be in the diapason from 0 to 1.");
+        }
     }
 
     public Double getMaxTransparency() {
@@ -50,7 +52,9 @@ public class NecklaceFilter {
     public void setMaxTransparency(Double maxTransparency) {
         if (maxTransparency >= 0 & maxTransparency <= 1)
             this.maxTransparency = maxTransparency;
-        else
-            System.out.println("Transparency must be in the diapason from 0 to 1.");
+        else {
+            this.maxTransparency = 1D;
+            System.out.println("Max transparency must be in the diapason from 0 to 1.");
+        }
     }
 }
