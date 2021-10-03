@@ -25,6 +25,10 @@ public class Necklace<T extends Gem> {
         }
     }
 
+    public Integer getSize() {
+        return size;
+    }
+
     //Create necklace with gems. Size of the necklace depends of count of gems.
     public Necklace(T... gems){
         this.gems = new ArrayList<>();
@@ -34,21 +38,25 @@ public class Necklace<T extends Gem> {
     }
 
     //Add new gem in the necklace
-    public void addGem(T gem) {
+    public Boolean addGem(T gem) {
         if (gems.size() + 1 <= size) {
             gems.add(gem);
+            return true;
         } else {
             System.out.println("The necklace is overflowed!");
+            return false;
         }
     }
 
     //Add new gems in the necklace
-    public void addGems(T... gems) {
+    public Boolean addGems(T... gems) {
         if (this.gems.size() + gems.length <= size) {
             for (T g : gems)
                 this.gems.add(g);
+            return true;
         } else {
             System.out.println("Can't add gems in the necklace. Too many gems!");
+            return false;
         }
     }
 
@@ -62,6 +70,14 @@ public class Necklace<T extends Gem> {
             return false;
         }
     }
+
+    public Gem getGem(Integer gemPosition) {
+        if (gemPosition >= 0 && gemPosition < this.size)
+            return this.gems.get(gemPosition);
+        else
+            return null;
+    }
+
 
     public List<Gem> getGems() {
         return getGems(null, null);
