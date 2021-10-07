@@ -1,4 +1,4 @@
-package jewels.classes.commom;
+package jewels.classes.common;
 
 public enum PreciousTypes {
     PRECIOUS,

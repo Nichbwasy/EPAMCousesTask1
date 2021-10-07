@@ -2,7 +2,7 @@ package jewels.controls;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import jewels.classes.commom.PreciousTypes;
+import jewels.classes.common.PreciousTypes;
 import jewels.classes.controls.NecklaceControl;
 import jewels.classes.gems.*;
 import jewels.classes.necklace.Necklace;

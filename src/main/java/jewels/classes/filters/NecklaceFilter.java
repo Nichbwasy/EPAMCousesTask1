@@ -1,12 +1,14 @@
 package jewels.classes.filters;
 
-import jewels.classes.commom.PreciousTypes;
+import jewels.classes.common.PreciousTypes;
 import jewels.classes.gems.Gem;
 import jewels.classes.necklace.Necklace;
-
-import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class NecklaceFilter {
+    private static final Logger LOGGER = LoggerFactory.getLogger(NecklaceFilter.class);
+
     private Necklace excludedNecklace;
     private PreciousTypes gemType = null;
     private Double minTransparency = null;
@@ -30,6 +32,7 @@ public class NecklaceFilter {
 
     public void setGemType(PreciousTypes gemType) {
         this.gemType = gemType;
+        LOGGER.info("Gem type has been sated to {}", gemType.toString());
     }
 
     public Double getMinTransparency() {
@@ -37,11 +40,14 @@ public class NecklaceFilter {
     }
 
     public void setMinTransparency(Double minTransparency) {
-        if (minTransparency >= 0 & minTransparency <= 1)
+        if (minTransparency >= 0 & minTransparency <= 1) {
             this.minTransparency = minTransparency;
+            LOGGER.info("Min transparency has been sated to {} ", minTransparency);
+        }
         else {
             this.maxTransparency = 0D;
-            System.out.println("Min transparency must be in the diapason from 0 to 1.");
+            LOGGER.warn("Min transparency must be in the diapason from 0 to 1. " +
+                    "Entered value = '{}'", minTransparency);
         }
     }
 
@@ -50,11 +56,14 @@ public class NecklaceFilter {
     }
 
     public void setMaxTransparency(Double maxTransparency) {
-        if (maxTransparency >= 0 & maxTransparency <= 1)
+        if (maxTransparency >= 0 & maxTransparency <= 1) {
             this.maxTransparency = maxTransparency;
+            LOGGER.info("Max transparency has been sated to {} ", minTransparency);
+        }
         else {
             this.maxTransparency = 1D;
-            System.out.println("Max transparency must be in the diapason from 0 to 1.");
+            LOGGER.warn("Max transparency must be in the diapason from 0 to 1. " +
+                    "Entered value = '{}'", maxTransparency);
         }
     }
 }

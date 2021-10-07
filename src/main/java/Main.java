@@ -16,15 +16,18 @@ public class Main {
         Gem g5 = new Emerald(1D);
         Necklace<Gem> necklace = new Necklace<>(5);
         necklace.addGems(g1, g3, g2, g4, g5);
+        necklace.addGem(g1);
+        necklace.addGems(g2, g3);
         Double weight = necklaceControl.getNecklaceWeight(necklace);
         Necklace sortedNecklace = necklaceControl.sortGemsByField(necklace, "precious");
+        sortedNecklace = necklaceControl.sortGemsByField(necklace, "price");
+        sortedNecklace = necklaceControl.sortGemsByField(necklace, "karat");
+        sortedNecklace = necklaceControl.sortGemsByField(necklace, "transparency");
+        sortedNecklace = necklaceControl.sortGemsByField(necklace, "null");
 
 
-        List<Gem> gems = necklaceControl.getGemsByTransparency(necklace, 0.7D, 0.99D);
-        for (Gem g : gems) System.out.println(g);
-
-        System.out.println("The necklace weight is " + necklaceControl.getNecklaceWeight(necklace));
-        System.out.println("The necklace price is " + necklaceControl.getNecklacePrice(necklace));
+        List<Gem> gems = necklaceControl.getGemsByTransparency(necklace, 0.8D, 0.2D);
+        gems = necklaceControl.getGemsByTransparency(necklace, 0.7D, 0.99D);
 
     }
 

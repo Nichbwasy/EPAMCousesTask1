@@ -1,6 +1,5 @@
 package jewels.interfaces.controls;
 
-import jewels.classes.commom.PreciousTypes;
 import jewels.classes.gems.Gem;
 import jewels.classes.necklace.Necklace;
 

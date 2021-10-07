@@ -1,6 +1,6 @@
 package jewels.gems;
 
-import jewels.classes.commom.PreciousTypes;
+import jewels.classes.common.PreciousTypes;
 import jewels.classes.gems.Sapphire;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

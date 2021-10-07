@@ -1,6 +1,6 @@
 package jewels.classes.gems;
 
-import jewels.classes.commom.PreciousTypes;
+import jewels.classes.common.PreciousTypes;
 
 public class Gem {
     protected Double karat = 0D;
@@ -34,11 +34,11 @@ public class Gem {
 
     @Override
     public String toString() {
-        return "Gem{" +
+        return "Gem[" +
                 "karat=" + karat +
                 ", precious=" + precious +
                 ", price=" + price +
                 ", transparency=" + transparency +
-                '}';
+                ']';
     }
 }
